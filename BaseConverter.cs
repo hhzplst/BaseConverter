@@ -3,8 +3,8 @@
 namespace BaseConverter {
     public class BaseConverter {
         public int Number {get; set; }
-        public string FromBase {get{ return FromBase; } set{ FromBase =  value.ToLower(); } }
-        public string ToBase {get{ return ToBase; } set{ ToBase = value.ToLower(); } }
+        public string FromBase {get; set; }
+        public string ToBase {get; set; }
         public void Init() {
             Number = 0;
             FromBase = "Decimal";
@@ -16,79 +16,44 @@ namespace BaseConverter {
         public void ResetBaseConverter() {
             Init();
         }
-        public string DecimalToBinary() {
-            return Convert.ToString(Number, 2);
-        }
-        public int BinaryToDecimal() {
-            return Convert.ToInt32(Convert.ToString(Number), 2);
-        }
-        public string DecimalToOctal() {
-            return Convert.ToString(Number, 8);
-        }
-        public int OctalToDecimal() {
-            return Convert.ToInt32(Convert.ToString(Number), 8);
-        }
-        public string DecimalToHex() {
-            return Convert.ToString(Number, 16);
-        }
-        public int HexToDecimal() {
-            return Convert.ToInt32(Convert.ToString(Number), 16);
-        }
-        public string BinaryToOctal() {
-            return Convert.ToString(BinaryToDecimal(), 8);
-        }
-        public string OctalToBinary() {
-            return Convert.ToString(OctalToDecimal(), 2);
-        }
-        public string BinaryToHex() {
-            return Convert.ToString(BinaryToDecimal(), 16);
-        }
-        public string HexToBinary() {
-            return Convert.ToString(HexToDecimal(), 2);
-        }
-        public string OctalToHex() {
-            return Convert.ToString(OctalToDecimal(), 16);
-        }
-        public string HexToOctal() {
-            return Convert.ToString(HexToDecimal(), 8);
-        }
         public void PrintResult() {
-            switch(FromBase + "TO" + ToBase) {
-                case "decimalTObinary":
-                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, DecimalToBinary(), ToBase);
+            BaseConversionCalculator myCalculator = new BaseConversionCalculator(Number);
+            switch(FromBase + "To" + ToBase) {
+                case "DecimalToBinary":
+                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, myCalculator.DecimalToBinary(), ToBase);
                     break;
-                case "binaryTOdecimal":
-                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, BinaryToDecimal(), ToBase);
+                case "BinaryToDecimal":
+                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, myCalculator.BinaryToDecimal(), ToBase);
                     break;
-                case "decimalTOoctal":
-                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, DecimalToOctal(), ToBase);
+                case "DecimalToOctal":
+                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, myCalculator.DecimalToOctal(), ToBase);
                     break;
-                case "octalTOdecimal":
-                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, OctalToDecimal(), ToBase);
+                case "OctalToDecimal":
+                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, myCalculator.OctalToDecimal(), ToBase);
                     break;
-                case "decimalTOhex":
-                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, DecimalToHex(), ToBase);
+                case "DecimalToHexadecimal":
+                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, myCalculator.DecimalToHex(), ToBase);
                     break;
-                case "hexTOdecimal":
-                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, HexToDecimal(), ToBase);
+                case "HexadecimalToDecimal":
+                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, myCalculator.HexToDecimal(), ToBase);
                     break;
-                case "binaryTOoctal":
-                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, BinaryToOctal(), ToBase);
+                case "BinaryToOctal":
+                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, myCalculator.BinaryToOctal(), ToBase);
                     break;
-                case "octalTObinary":
-                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, OctalToBinary(), ToBase);
+                case "OctalToBinary":
+                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, myCalculator.OctalToBinary(), ToBase);
                     break;
-                case "binaryTOhex":
-                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, BinaryToHex(), ToBase);
+                case "BinaryToHexadecimal":
+                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, myCalculator.BinaryToHex(), ToBase);
                     break;
-                case "hexTObinary":
-                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, HexToBinary(), ToBase);
+                case "HexadecimalToBinary":
+                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, myCalculator.HexToBinary(), ToBase);
                     break;
-                case "octalTOhex":
-                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, OctalToHex(), ToBase);
+                case "OctalToHexadecimal":
+                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, myCalculator.OctalToHex(), ToBase);
                     break;
-                case "hexTOoctal":
-                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, HexToOctal(), ToBase);
+                case "HexadecimalToOctal":
+                    Console.WriteLine("{1} in {2} is {3} in {4}. ", Number, FromBase, myCalculator.HexToOctal(), ToBase);
                     break;
                 default: 
                     Console.WriteLine("This program only support the conversion between 2, 8, 10 and 16. ");    
